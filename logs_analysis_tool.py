@@ -31,7 +31,7 @@ def most_popular_three_articles(db_cursor):
     print('=======================================')
 
     for result in results:
-        print('"{title}" — {count} views'
+        print('"{title}" - {count} views'
               .format(title=result[0], count=result[1]))
     print()
 
@@ -59,7 +59,7 @@ def most_popular_authors(db_cursor):
     print('================================')
 
     for result in results:
-        print('{author} — {count} views'
+        print('{author} - {count} views'
               .format(author=result[0], count=result[1]))
     print()
 
@@ -97,7 +97,7 @@ def days_greater_than_1pc_errors(db_cursor):
     print('================================')
 
     for result in results:
-        print('{date:%B %d, %Y} — {error_rate:.1f}% errors'.format(
+        print('{date:%B %d, %Y} - {error_rate:.1f}% errors'.format(
             date=result[0],
             error_rate=result[1]))
     print()
