@@ -5,10 +5,14 @@ import psycopg2
 
 def connect_to_database():
     """Connects to the news database and return a database cursor."""
-    database = psycopg2.connect("dbname=news")
-    cursor = database.cursor()
-
-    return cursor
+    try:
+        database = psycopg2.connect("dbname=news")
+        cursor = database.cursor()
+    except:
+        print("Failed to connect to the PostgreSQL database.")
+        return None
+    else:
+        return cursor
 
 
 def most_popular_three_articles(db_cursor):
@@ -107,7 +111,8 @@ def days_greater_than_1pc_errors(db_cursor):
 
 if __name__ == "__main__":
     CURSOR = connect_to_database()
-    most_popular_three_articles(CURSOR)
-    most_popular_authors(CURSOR)
-    days_greater_than_1pc_errors(CURSOR)
-    CURSOR.close()
+    if CURSOR:
+        most_popular_three_articles(CURSOR)
+        most_popular_authors(CURSOR)
+        days_greater_than_1pc_errors(CURSOR)
+        CURSOR.close()
