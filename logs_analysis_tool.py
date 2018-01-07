@@ -16,7 +16,12 @@ def connect_to_database():
 
 
 def most_popular_three_articles(db_cursor):
-    """Query and print out the 3 most popular articles."""
+    """Query and print out the 3 most popular articles.
+
+    Args:
+        db_cursor: psycopg2 PostgreSQL database cursor object.
+
+    """
     query = """
             SELECT articles.title,
                    count(*)
@@ -43,7 +48,12 @@ def most_popular_three_articles(db_cursor):
 
 
 def most_popular_authors(db_cursor):
-    """Query and print out the most popular authors."""
+    """Query and print out the most popular authors.
+
+    Args:
+        db_cursor: psycopg2 PostgreSQL database cursor object.
+
+    """
     query = """
             SELECT authors.name,
                    count(*)
@@ -71,7 +81,12 @@ def most_popular_authors(db_cursor):
 
 
 def days_greater_than_1pc_errors(db_cursor):
-    """Query and print out days where the error rate is greater than 1%."""
+    """Query and print out days where the error rate is greater than 1%.
+
+    Args:
+        db_cursor: psycopg2 PostgreSQL database cursor object.
+
+    """
     query = """
             WITH num_requests AS (
                 SELECT time::date AS day, count(*)
