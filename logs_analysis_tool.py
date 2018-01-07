@@ -26,15 +26,15 @@ def most_popular_three_articles(db_cursor):
     db_cursor.execute(query)
     results = db_cursor.fetchall()
 
-    print('')
+    print()
     print('Three most popular articles of all time')
     print('=======================================')
 
     for result in results:
-        print('"{title}" — {count} views'.format(title=result[0],
-                                                 count=result[1]))
+        print('"{title}" — {count} views'
+              .format(title=result[0], count=result[1]))
+    print()
 
-    print('')
     return
 
 
@@ -54,15 +54,15 @@ def most_popular_authors(db_cursor):
     db_cursor.execute(query)
     results = db_cursor.fetchall()
 
-    print('')
+    print()
     print('Most popular authors of all time')
     print('================================')
 
     for result in results:
-        print('{author} — {count} views'.format(author=result[0],
-                                                count=result[1]))
+        print('{author} — {count} views'
+              .format(author=result[0], count=result[1]))
+    print()
 
-    print('')
     return
 
 
@@ -92,7 +92,7 @@ def days_greater_than_1pc_errors(db_cursor):
     db_cursor.execute(query)
     results = db_cursor.fetchall()
 
-    print('')
+    print()
     print('Days with greater than 1% errors')
     print('================================')
 
@@ -100,8 +100,8 @@ def days_greater_than_1pc_errors(db_cursor):
         print('{date:%B %d, %Y} — {error_rate:.1f}% errors'.format(
             date=result[0],
             error_rate=result[1]))
+    print()
 
-    print('')
     return
 
 
