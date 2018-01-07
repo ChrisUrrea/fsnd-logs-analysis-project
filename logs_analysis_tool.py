@@ -18,7 +18,7 @@ def most_popular_three_articles(db_cursor):
                    count(*)
             FROM   log,
                    articles
-            WHERE  log.path like '%' || articles.slug || '%'
+            WHERE  log.path = '/article/' || articles.slug
             GROUP BY articles.title
             ORDER BY count(*) DESC
             LIMIT 3;
@@ -46,7 +46,7 @@ def most_popular_authors(db_cursor):
             FROM   log,
                    articles,
                    authors
-            WHERE  log.path LIKE '%' || articles.slug || '%'
+            WHERE  log.path = '/article/' || articles.slug
               AND articles.author = authors.id
             GROUP BY authors.name
             ORDER BY count(*) DESC;
